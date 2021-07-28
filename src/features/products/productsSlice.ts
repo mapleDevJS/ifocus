@@ -1,26 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-
-const BASE_URL = 'https://fakestoreapi.com';
-
-export interface Product {
-  category: string;
-  description: string;
-  id: number;
-  image: string;
-  price: number;
-  title: string;
-}
+import { Config } from "../../config/config";
+import { Product, Status } from "../../app/types";
 
 export const productsActionTypes = {
   LOAD_PRODUCTS_LIST: "products/LOAD_PRODUCTS_LIST",
 } as const;
-
-export enum Status {
-  IDLE = "idle",
-  LOADING = "loading",
-  FAILED = "failed",
-}
 
 export interface ProductsState {
   products: Product[];
@@ -35,8 +20,8 @@ const initialState: ProductsState = {
 export const loadProductsList = createAsyncThunk(
   productsActionTypes.LOAD_PRODUCTS_LIST,
   async () => {
-    const response = await fetch(`${BASE_URL}/products`).then(
-      (res) => res.json()
+    const response = await fetch(`${Config.BASE_URL}/products`).then((res) =>
+      res.json()
     );
 
     return response;

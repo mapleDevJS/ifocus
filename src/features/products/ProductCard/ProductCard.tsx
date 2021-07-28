@@ -1,4 +1,4 @@
-import { Product } from "../productsSlice";
+import { Product } from "../../../app/types";
 
 interface Props {
   product: Product;
