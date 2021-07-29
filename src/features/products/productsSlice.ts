@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { Config } from "../../config/config";
 import { Product, Status } from "../../app/types";
+import { PRODUCTS_PER_PAGE } from '../../consts';
 
 export const productsActionTypes = {
   LOAD_PRODUCTS_LIST: "products/LOAD_PRODUCTS_LIST",
@@ -47,5 +48,12 @@ export const productsSlice = createSlice({
 });
 
 export const selectProducts = (state: RootState) => state.products.products;
+
+export const selectProductsByPageNumber = (state: RootState, page: number) => {
+  const { products } = state.products;
+  return products.slice(PRODUCTS_PER_PAGE * page - PRODUCTS_PER_PAGE, PRODUCTS_PER_PAGE * page);
+}
+
+export const selectTotalProducts = (state: RootState) => state.products.products.length;
 
 export default productsSlice.reducer;

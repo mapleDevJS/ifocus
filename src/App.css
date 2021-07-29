@@ -1,3 +1,5 @@
+@import '../node_modules/rc-pagination/assets/index.css';
+
 .App {
   text-align: center;
 }
