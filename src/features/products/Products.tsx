@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector, useDebounce } from "../../app/hooks";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
+import { Notification } from "../../components/Notification/Notification";
 import { loadProductsList, selectProducts } from "./productsSlice";
 import Pagination from "rc-pagination";
-import { PRODUCTS_PER_PAGE } from "../../consts";
+import { Messages, PRODUCTS_PER_PAGE } from "../../consts";
 import { selectProductsByPageNumber, filterProductsByName } from "./utils";
 import { NavLink } from "react-router-dom";
 import { AppRoutes } from "../../App";
@@ -11,10 +12,12 @@ import './Products.module.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 // import Swiper core and required modules
 import SwiperCore, { Navigation } from "swiper/core";
+import { Status } from "../../app/types";
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation]);
 
 export const Products: React.FC = () => {
+  const { status } = useAppSelector((state) => state.products);
   const [page, setPage] = useState<number>(1);
   const [searchInputs, setSearchInputs] = useState<{ [k in string]: string }>({
     name: "",
@@ -59,6 +62,7 @@ export const Products: React.FC = () => {
   return (
     <>
       <NavLink to={AppRoutes.CART}>Go to Cart</NavLink>
+      {status !== Status.IDLE && <Notification message={Messages[status]} />}
       <Pagination
         onChange={pageChangeHandler}
         current={page}

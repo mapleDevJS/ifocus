@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import { Products } from "./features/products/Products";
-import { ProductPage } from "./features/productPage/ProductPage";
+import { ProductDetails } from "./features/productDetails/ProductDetails";
 import { Cart } from "./features/cart/Cart";
 
 export const AppRoutes = {
@@ -32,7 +32,7 @@ const App = () => {
           <Route
             exact
             path={`${AppRoutes.PRODUCTS}/:id`}
-            component={ProductPage}
+            component={ProductDetails}
           />
           <Route
             exact

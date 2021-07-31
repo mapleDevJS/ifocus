@@ -1,0 +1,10 @@
+.notification {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    font-weight: 700;
+    font-size: 18px;
+}
