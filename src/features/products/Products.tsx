@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { AppRoutes } from "../../App";
 import { useAppDispatch, useAppSelector, useDebounce } from "../../app/hooks";
 import { ProductCard } from "./ProductCard/ProductCard";
 import {
@@ -10,6 +8,9 @@ import {
 import Pagination from "rc-pagination";
 import { PRODUCTS_PER_PAGE } from "../../consts";
 import { selectProductsByPageNumber, filterProductsByName } from './utils';
+import { createCart } from "../cart/cartSlice";
+import { NavLink } from "react-router-dom";
+import { AppRoutes } from "../../App";
 
 
 export const Products: React.FC = () => {
@@ -32,6 +33,7 @@ export const Products: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadProductsList());
+    dispatch(createCart());
   }, [dispatch]);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ export const Products: React.FC = () => {
 
   return (
     <>
+      <NavLink to={AppRoutes.CART}>Go to Cart</NavLink>
       <Pagination
         onChange={pageChangeHandler}
         current={page}
@@ -71,9 +74,7 @@ export const Products: React.FC = () => {
         {filteredAndSlicedProducts.map((product) => {
           return (
             <li key={product.id}>
-              <Link to={`${AppRoutes.PRODUCTS}/${product.id}`}>
                 <ProductCard product={product} />
-              </Link>
             </li>
           );
         })}

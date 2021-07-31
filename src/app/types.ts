@@ -12,3 +12,8 @@ export enum Status {
   LOADING = "loading",
   FAILED = "failed",
 }
+
+export interface ProductInCart {
+  productId: number;
+  quantity: number;
+}

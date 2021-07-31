@@ -9,10 +9,12 @@ import {
 import "./App.css";
 import { Products } from "./features/products/Products";
 import { ProductPage } from "./features/productPage/ProductPage";
+import { Cart } from "./features/cart/Cart";
 
 export const AppRoutes = {
   ROOT: '/',
   PRODUCTS: '/products',
+  CART: '/cart',
 }
 
 export const history = createBrowserHistory();
@@ -31,6 +33,11 @@ const App = () => {
             exact
             path={`${AppRoutes.PRODUCTS}/:id`}
             component={ProductPage}
+          />
+          <Route
+            exact
+            path={`${AppRoutes.CART}`}
+            component={Cart}
           />
         </Switch>
         <Redirect exact from={AppRoutes.ROOT} to={AppRoutes.PRODUCTS} />
