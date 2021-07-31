@@ -13,7 +13,11 @@ export enum Status {
   FAILED = "failed",
 }
 
-export interface ProductInCart {
+export interface CartItem {
   productId: number;
+  quantity: number;
+}
+
+export interface ProductInCart extends Product {
   quantity: number;
 }

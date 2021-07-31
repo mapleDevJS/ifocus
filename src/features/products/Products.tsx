@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector, useDebounce } from "../../app/hooks";
-import { ProductCard } from "./ProductCard/ProductCard";
+import { ProductCard } from "../../components/ProductCard/ProductCard";
 import {
   loadProductsList,
   selectProducts,
@@ -8,7 +8,6 @@ import {
 import Pagination from "rc-pagination";
 import { PRODUCTS_PER_PAGE } from "../../consts";
 import { selectProductsByPageNumber, filterProductsByName } from './utils';
-import { createCart } from "../cart/cartSlice";
 import { NavLink } from "react-router-dom";
 import { AppRoutes } from "../../App";
 
@@ -33,7 +32,6 @@ export const Products: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadProductsList());
-    dispatch(createCart());
   }, [dispatch]);
 
   useEffect(() => {

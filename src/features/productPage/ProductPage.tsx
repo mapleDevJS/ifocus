@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { ProductCard } from "../products/ProductCard/ProductCard";
+import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { loadProduct, resetProduct, selectProduct } from "./productPageSlice";
 
 export const ProductPage: React.FC = () => {
