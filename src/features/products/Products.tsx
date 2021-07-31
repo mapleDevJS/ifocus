@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector, useDebounce } from "../../app/hooks";
 import { ProductCard } from "../../components/ProductCard/ProductCard";
-import {
-  loadProductsList,
-  selectProducts,
-} from "./productsSlice";
+import { loadProductsList, selectProducts } from "./productsSlice";
 import Pagination from "rc-pagination";
 import { PRODUCTS_PER_PAGE } from "../../consts";
-import { selectProductsByPageNumber, filterProductsByName } from './utils';
+import { selectProductsByPageNumber, filterProductsByName } from "./utils";
 import { NavLink } from "react-router-dom";
 import { AppRoutes } from "../../App";
-
+import './Products.module.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+// import Swiper core and required modules
+import SwiperCore, { Navigation } from "swiper/core";
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
 
 export const Products: React.FC = () => {
   const [page, setPage] = useState<number>(1);
@@ -27,7 +29,10 @@ export const Products: React.FC = () => {
     setPage(page);
   };
 
-  const filteredAndSlicedProducts = selectProductsByPageNumber(filteredProducts, page);
+  const filteredAndSlicedProducts = selectProductsByPageNumber(
+    filteredProducts,
+    page
+  );
   const totalProducts = filteredProducts.length;
 
   useEffect(() => {
@@ -68,11 +73,28 @@ export const Products: React.FC = () => {
         onChange={inputChangeHandler}
         value={searchInputs.name}
       />
+
+      <Swiper
+        pagination={{
+          type: "progressbar",
+        }}
+        navigation={true}
+        className="mySwiper"
+      >
+        {filteredAndSlicedProducts.map((product) => {
+          return (
+            <SwiperSlide key={product.id}>
+              <ProductCard product={product} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
       <ul>
         {filteredAndSlicedProducts.map((product) => {
           return (
             <li key={product.id}>
-                <ProductCard product={product} />
+              <ProductCard product={product} />
             </li>
           );
         })}
