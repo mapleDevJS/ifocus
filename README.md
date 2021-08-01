@@ -1,44 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+<img src="src/assets/favicon.png" alt="Logo" width="80" height="80">
 
-In the project directory, you can run:
+  <h3 align="center">iFocus Test Assessment</h3>
+</p>
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="public/cover.png" alt="Logo" width="550" height="380">
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The theme of the project is an e-commerce site, you are expected to write your own code without any starter template / code built from others.
+For React, you are expected to use the boilerplate code from facebook/create-react-app, and for React Native, you are expected to use the boilerplate code from expo/create-react-native-app.
+You can use any open source library available for your project, please respect the software licenses of the open source softwares.
+In your application, you are expected to use the data from this API provider:
+https://fakestoreapi.com/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Please refer to the API documentation on Fake store API for how to fetch the products data.
 
-### `yarn eject`
+Project requirements (complete at least 3/7 items) 
+Product list
+Product details redirected from Product list
+Pagination (5 items per page)
+Filtering / Search
+Add to cart
+Remove from cart
+Image carousel
+Website must be mobile responsive
+Reusable and clean project structure
+Website must be built with React, app must be build with React Native
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Built With
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [redux-logic](https://github.com/jeffbski/redux-logic)
+* [Typescript](https://www.typescriptlang.org/)
+* [WebPack 5](https://webpack.js.org/)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+* node.js
+  ```sh
+  npm install node@14.17.0
+  ```
+* yarn
+  ```sh
+  npm install yarn -g
+  ```
+
+### Installation
+
+1. Install NPM packages
+   ```sh
+   yarn install
+   ```
+2. Install Husky
+   ```sh
+   yarn run prepare
+   ```
+3. Run the project
+   ```sh
+   yarn run start
+   ```
+4. Build the project
+   ```sh
+   yarn run build
+   ```
+<!-- CONTACT -->
+## Contact
+
+Alexey Ivanov - alexey.ivanov.js@gmail.com
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/alexey-ivanov-fcsmjs
