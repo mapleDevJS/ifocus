@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import { AppRoutes } from '../../../common/consts';
 import { ContinueShoppingIcon } from '../../../common/components/Icons/Icons';
 import styles from './ContinueShopping.module.css';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export const ContinueShopping = () => {
     return (

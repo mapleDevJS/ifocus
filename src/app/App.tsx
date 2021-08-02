@@ -13,16 +13,8 @@ const App = () => {
         <div className="container">
             <Router history={history}>
                 <Switch>
-                    <Route
-                        exact
-                        path={AppRoutes.PRODUCTS}
-                        component={Products}
-                    />
-                    <Route
-                        exact
-                        path={`${AppRoutes.PRODUCTS}/:id`}
-                        component={ProductDetails}
-                    />
+                    <Route exact path={AppRoutes.PRODUCTS} component={Products} />
+                    <Route exact path={`${AppRoutes.PRODUCTS}/:id`} component={ProductDetails} />
                     <Route exact path={`${AppRoutes.SHOPPING_CART}`} component={ShoppingCart} />
                 </Switch>
                 <Redirect exact from={AppRoutes.ROOT} to={AppRoutes.PRODUCTS} />

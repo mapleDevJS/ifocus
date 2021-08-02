@@ -1,3 +1,3 @@
 export const Config = {
-  BASE_URL: "https://fakestoreapi.com",
+    BASE_URL: 'https://fakestoreapi.com',
 };

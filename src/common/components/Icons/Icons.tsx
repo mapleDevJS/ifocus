@@ -24,12 +24,7 @@ export const DecrementIcon = () => {
 
 export const IncrementIcon = () => {
     return (
-        <svg
-            width="12"
-            height="12"
-            viewBox="0 0 12 12"
-            fill="none"
-        >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path
                 d="M11.8346 5.16602H6.83464V0.166016H5.16797V5.16602H0.167969V6.83268H5.16797V11.8327H6.83464V6.83268H11.8346V5.16602Z"
                 fill="#262626"
