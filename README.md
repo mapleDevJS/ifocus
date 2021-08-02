@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-<img src="src/assets/favicon.png" alt="Logo" width="80" height="80">
+<img src="src/common/assets/img/logo.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">iFocus Test Assessment</h3>
 </p>
@@ -64,10 +64,9 @@ Website must be built with React, app must be build with React Native
 
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
-* [redux-logic](https://github.com/jeffbski/redux-logic)
+* [Redux-Toolkit](https://redux-toolkit.js.org/)
 * [Typescript](https://www.typescriptlang.org/)
-* [WebPack 5](https://webpack.js.org/)
-
+* [Create React App](https://create-react-app.dev/)
 
 
 <!-- GETTING STARTED -->
@@ -95,15 +94,11 @@ Website must be built with React, app must be build with React Native
    ```sh
    yarn install
    ```
-2. Install Husky
-   ```sh
-   yarn run prepare
-   ```
-3. Run the project
+2. Run the project
    ```sh
    yarn run start
    ```
-4. Build the project
+3. Build the project
    ```sh
    yarn run build
    ```

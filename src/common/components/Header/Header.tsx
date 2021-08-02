@@ -38,14 +38,18 @@ export const Header: React.FC<Props> = ({ onChange, searchDisabled = false }) =>
                         className={styles.logoImg}
                         alt="Logotype of iFocus"
                         src={logo}
-                        width="50px"
+                        width="46px"
                         height="50px"
                     />
                 </Link>
             </div>
 
             <div className={styles.headerInfo}>
-                <NavLink to={AppRoutes.SHOPPING_CART} className={styles.shoppingCart}>
+                <NavLink
+                    to={AppRoutes.SHOPPING_CART}
+                    className={styles.shoppingCart}
+                    aria-label="Navigate To Shopping Cart"
+                >
                     {totalItemsInCart > 0 && (
                         <span className={styles.itemsInCart}>{totalItemsInCart}</span>
                     )}

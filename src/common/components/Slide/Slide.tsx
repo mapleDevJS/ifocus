@@ -18,8 +18,8 @@ export const Slide: React.FC<Props> = ({ product }) => {
                         className={styles.productImg}
                         alt={title}
                         src={image}
-                        // width="100%"
-                        // height="260px"
+                        width="100%"
+                        height="260px"
                     />
                 </Link>
             </div>
