@@ -8,6 +8,7 @@ import { ContinueShopping } from '../../common/components/ContinueShopping/Conti
 
 export const ShoppingCart = () => {
     const products = useAppSelector(selectProductsInCart);
+    const total = useAppSelector(state => state.cart.total);
 
     const isCartEmpty = products.length === 0;
 
@@ -17,22 +18,20 @@ export const ShoppingCart = () => {
             {isCartEmpty && <Notification message={'Cart is empty'} />}
 
             {!isCartEmpty && (
-                <ul className={styles.itemsList}>
-                    {products.map(
-                        product =>
-                            product && (
-                                <li className={styles.item}>
-                                    <ItemInCart item={product} />
-                                </li>
-                            ),
-                    )}
-                </ul>
+                <>
+                    <ul className={styles.itemsList}>
+                        {products.map(
+                            product =>
+                                product && (
+                                    <li className={styles.item}>
+                                        <ItemInCart item={product} />
+                                    </li>
+                                ),
+                        )}
+                    </ul>
+                    <span className={styles.total}>Order Total: ${total.toFixed(2)}</span>
+                </>
             )}
-
-            {/* <NavLink className={styles.continueShopping} to={AppRoutes.PRODUCTS}>
-                <ContinueShoppingIcon />
-                <span className={styles.continueShoppingText}>Continue shopping</span>
-            </NavLink> */}
             <ContinueShopping />
         </>
     );

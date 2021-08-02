@@ -45,5 +45,7 @@ export const productsSlice = createSlice({
 });
 
 export const selectProducts = (state: RootState) => state.products.products;
+export const selectProductById = (id: number, state: RootState) =>
+    void state.products.products.filter(product => product.id === id);
 
 export default productsSlice.reducer;

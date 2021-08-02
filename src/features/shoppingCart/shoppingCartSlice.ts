@@ -15,6 +15,7 @@ export interface CartState {
     userId: number | null;
     date: string;
     products: ShoppingCartItem[];
+    total: number;
 }
 
 const initialState: CartState = {
@@ -23,6 +24,7 @@ const initialState: CartState = {
     userId: 1,
     date: '',
     products: [],
+    total: 0,
 };
 
 export const createCart = createAsyncThunk(cartActionTypes.CREATE_CART, async () => {
@@ -58,34 +60,39 @@ export const cartSlice = createSlice({
     initialState,
 
     reducers: {
-        addProductToCart: (state, action: PayloadAction<number>) => {
+        addProductToCart: (state, action: PayloadAction<{id: number, price: number}>) => {
             if (state.products.length) {
                 const foundProduct = state.products.find(
-                    product => product.productId === action.payload,
+                    product => product.productId === action.payload.id
                 );
 
                 if (foundProduct) {
                     foundProduct.quantity++;
+
                 } else {
-                    state.products.push({ productId: action.payload, quantity: 1 });
+                    state.products.push({ productId: action.payload.id, quantity: 1 });
+
                 }
             } else {
-                state.products.push({ productId: action.payload, quantity: 1 });
+                state.products.push({ productId: action.payload.id, quantity: 1 });
             }
+            state.total += action.payload.price;
         },
 
-        removeProductFromCart: (state, action: PayloadAction<number>) => {
+        removeProductFromCart: (state, action: PayloadAction<{id: number, price: number}>) => {
             const foundProduct = state.products.find(
-                product => product.productId === action.payload,
+                product => product.productId === action.payload.id,
             );
 
             if (foundProduct && foundProduct.quantity > 1) {
                 foundProduct.quantity--;
             } else {
                 state.products = state.products.filter(
-                    product => product.productId !== action.payload,
+                    product => product.productId !== action.payload.id,
+
                 );
             }
+            state.total -= action.payload.price;
         },
     },
 

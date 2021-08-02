@@ -18,12 +18,12 @@ export const ItemInCart: React.FC<Props> = ({ item }) => {
     const dispatch = useAppDispatch();
     const { id, title, price, category, image, quantity } = item;
 
-    const addToCartClickHandler = (id: number) => {
-        dispatch(addProductToCart(id));
+    const addToCartClickHandler = (id: number, price: number) => {
+        dispatch(addProductToCart({id, price}));
     };
 
-    const removeClickHandler = (id: number) => {
-        dispatch(removeProductFromCart(id));
+    const removeClickHandler = (id: number, price: number) => {
+        dispatch(removeProductFromCart({id, price}));
     };
 
     return (
@@ -47,7 +47,7 @@ export const ItemInCart: React.FC<Props> = ({ item }) => {
                     <button
                         className={styles.decrementButton}
                         aria-label="remove from cart"
-                        onClick={() => removeClickHandler(id)}
+                        onClick={() => removeClickHandler(id, price)}
                     >
                         <DecrementIcon />
                     </button>
@@ -55,7 +55,7 @@ export const ItemInCart: React.FC<Props> = ({ item }) => {
                     <button
                         className={styles.incrementButton}
                         aria-label="add to cart"
-                        onClick={() => addToCartClickHandler(id)}
+                        onClick={() => addToCartClickHandler(id, price)}
                     >
                         <IncrementIcon />
                     </button>

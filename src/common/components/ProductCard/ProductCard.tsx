@@ -13,8 +13,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     const dispatch = useAppDispatch();
     const { id, title, description, price, category, image } = product;
 
-    const addToCartClickHandler = (id: number) => {
-        dispatch(addProductToCart(id));
+    const addToCartClickHandler = (id: number, price: number) => {
+        dispatch(addProductToCart({id, price}));
     };
 
     return (
@@ -47,7 +47,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
                     <button
                         className={styles.addToCartButton}
                         aria-label="add to cart"
-                        onClick={() => addToCartClickHandler(id)}
+                        onClick={() => addToCartClickHandler(id, price)}
                     >
                         Add to cart
                     </button>
