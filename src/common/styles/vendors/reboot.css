@@ -21,9 +21,9 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5rem;
     font-family: var(--font-family);
-    color: var(--color-default-black);
+    color: var(--black);
 
     background-color: var(--color-default-grey);
 
@@ -32,7 +32,7 @@ body {
 }
 
 a {
-    color: var(--color-default-black);
+    color: var(--black);
     text-decoration: none;
 }
 
@@ -49,9 +49,9 @@ textarea {
 
 /* chrome autofill background removal */
 input:-webkit-autofill {
-    box-shadow: inset 0 0 0 1000px var(--color-default-white);
+    box-shadow: inset 0 0 0 1000px var(--white);
 
-    -webkit-text-fill-color: var(--color-default-black);
+    -webkit-text-fill-color: var(--black);
 }
 
 /* firefox placeholder \ invalid fix + ios bdrs */

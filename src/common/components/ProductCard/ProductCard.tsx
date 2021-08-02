@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../../app/types';
 import { addProductToCart } from '../../../features/shoppingCart/shoppingCartSlice';
 import { AppRoutes } from '../../consts';
+import styles from './ProductCard.module.css';
 
 interface Props {
     product: Product;
@@ -18,18 +19,40 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
     return (
         <article>
-            <Link to={`${AppRoutes.PRODUCTS}/${id}`}>
-                <img alt={title} src={image} width="80" height="80" />
-            </Link>
-            <Link to={`${AppRoutes.PRODUCTS}/${id}`}>
-                <h3>{title}</h3>
-            </Link>
-            <span>{category}</span>
-            <p>{description}</p>
-            <span>{price} $</span>
-            <button aria-label="add to cart" onClick={() => addToCartClickHandler(id)}>
-                Add to cart
-            </button>
+            <div className={styles.productImgBox}>
+                <Link to={`${AppRoutes.PRODUCTS}/${id}`}>
+                    <img
+                        className={styles.productImg}
+                        alt={title}
+                        src={image}
+                        width="100%"
+                        height="260px"
+                    />
+                </Link>
+            </div>
+
+            <div className={styles.productDescription}>
+                <div className={styles.titleBox}>
+                    <Link to={`${AppRoutes.PRODUCTS}/${id}`} className={styles.link}>
+                        <h3>{title}</h3>
+                    </Link>
+                    <span className={styles.category}>{category}</span>
+                </div>
+                <div className={styles.descriptionBox}>
+                    <p>{description}</p>
+                </div>
+
+                <div className={styles.cardControls}>
+                    <span className={styles.price}>${price}</span>
+                    <button
+                        className={styles.addToCartButton}
+                        aria-label="add to cart"
+                        onClick={() => addToCartClickHandler(id)}
+                    >
+                        Add to cart
+                    </button>
+                </div>
+            </div>
         </article>
     );
 };

@@ -1,42 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { ProductCard } from '../../common/components/ProductCard/ProductCard';
+import { Slide } from '../../common/components/Slide/Slide';
 import { Notification } from '../../common/components/Notification/Notification';
+import { Header } from '../../common/components/Header/Header';
 import { loadProductsList, selectProducts } from './productsSlice';
 import Pagination from 'rc-pagination';
-import { AppRoutes, Messages, PRODUCTS_PER_PAGE } from '../../common/consts';
+import { Messages, PRODUCTS_PER_PAGE } from '../../common/consts';
 import { selectProductsByPageNumber, filterProductsByName } from './utils';
-import { NavLink } from 'react-router-dom';
-import './Products.module.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import styles from './Products.module.css';
 // import Swiper core and required modules
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper/core';
 import { Status } from '../../app/types';
 import { useAppDispatch, useAppSelector, useDebounce } from '../../common/hooks/hooks';
-// install Swiper modules
-SwiperCore.use([Pagination, Navigation]);
 
 export const Products: React.FC = () => {
-    const { status } = useAppSelector(state => state.products);
-    const [page, setPage] = useState<number>(1);
-    const [searchInputs, setSearchInputs] = useState<{ [k in string]: string }>(
-        {
-            name: '',
-        },
-    );
-    const debouncedSearchName = useDebounce(searchInputs.name, 300);
+    // install Swiper modules
+    SwiperCore.use([Pagination, Navigation]);
     const dispatch = useAppDispatch();
-
+    const { status } = useAppSelector(state => state.products);
     const products = useAppSelector(selectProducts);
+
+    const [searchedProduct, setSearchedProduct] = useState<string>('');
+    const [page, setPage] = useState<number>(1);
     const [filteredProducts, setFilteredProducts] = useState(products);
+
+    const debouncedSearchName = useDebounce(searchedProduct, 300);
 
     const pageChangeHandler = (page: number) => {
         setPage(page);
     };
 
-    const filteredAndSlicedProducts = selectProductsByPageNumber(
-        filteredProducts,
-        page,
-    );
+    const filteredAndSlicedProducts = selectProductsByPageNumber(filteredProducts, page);
     const totalProducts = filteredProducts.length;
 
     useEffect(() => {
@@ -45,43 +40,19 @@ export const Products: React.FC = () => {
 
     useEffect(() => {
         if (debouncedSearchName) {
-            setFilteredProducts(
-                filterProductsByName(products, debouncedSearchName),
-            );
+            setFilteredProducts(filterProductsByName(products, debouncedSearchName));
         } else {
             setFilteredProducts(products);
         }
     }, [products, debouncedSearchName]);
 
-    const inputChangeHandler = (evt: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = evt.target;
-
-        setSearchInputs({
-            ...searchInputs,
-            [name]: value,
-        });
+    const inputChangeHandler = (searchedProduct: string) => {
+        setSearchedProduct(searchedProduct);
     };
 
     return (
-        <>
-            <NavLink to={AppRoutes.SHOPPING_CART}>Go to Cart</NavLink>
-            {status !== Status.IDLE && (
-                <Notification message={Messages[status]} />
-            )}
-            <Pagination
-                onChange={pageChangeHandler}
-                current={page}
-                pageSize={PRODUCTS_PER_PAGE}
-                total={totalProducts}
-                hideOnSinglePage
-            />
-            <input
-                type="text"
-                name="name"
-                placeholder="search by name"
-                onChange={inputChangeHandler}
-                value={searchInputs.name}
-            />
+        <section className={styles.products}>
+            <Header onChange={inputChangeHandler} />
 
             <Swiper
                 slidesPerView={3}
@@ -95,24 +66,32 @@ export const Products: React.FC = () => {
                 navigation={true}
                 className="mySwiper"
             >
-                {filteredAndSlicedProducts.map(product => {
-                    return (
-                        <SwiperSlide key={product.id}>
-                            <ProductCard product={product} />
-                        </SwiperSlide>
-                    );
-                })}
+                {products.map(product => (
+                    <SwiperSlide key={product.id}>
+                        <Slide product={product} />
+                    </SwiperSlide>
+                ))}
             </Swiper>
 
-            <ul>
+            {status !== Status.IDLE && <Notification message={Messages[status]} />}
+
+            <ul className={styles.productsList}>
                 {filteredAndSlicedProducts.map(product => {
                     return (
-                        <li key={product.id}>
+                        <li key={product.id} className={styles.productsListItem}>
                             <ProductCard product={product} />
                         </li>
                     );
                 })}
             </ul>
-        </>
+
+            <Pagination
+                onChange={pageChangeHandler}
+                current={page}
+                pageSize={PRODUCTS_PER_PAGE}
+                total={totalProducts}
+                hideOnSinglePage
+            />
+        </section>
     );
 };

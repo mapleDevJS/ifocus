@@ -1,0 +1,91 @@
+.cartItem {
+    display: grid;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    grid-gap: 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.itemImgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+}
+
+.imgLink {
+    width: 100%;
+}
+
+.itemImg {
+    width: 70%;
+}
+
+.itemDescription h3 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4em;
+    text-transform: uppercase;
+}
+
+.category {
+    font-weight: 500;
+    line-height: 1.2em;
+}
+
+.price {
+    display: block;
+    flex-grow: 0;
+    margin-left: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2em;
+}
+
+.quantity {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 3rem;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+}
+
+.decrementButton {
+    content: '';
+    position: absolute;
+    top: calc(50% - 12px);
+    left: 0;
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: var(--transparent);
+    border-style: none;
+}
+
+.incrementButton {
+    content: '';
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 12px;
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: var(--transparent);
+    border-style: none;
+}
+
+.decrementButton:hover,
+.incrementButton:hover {
+    cursor: pointer;
+}

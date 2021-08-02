@@ -2,30 +2,19 @@
     /* Colors */
 
     /* Default */
-    --color-default-black: #000000;
-    --color-default-white: #ffffff;
-    --color-transparent: rgba(255, 255, 255, 0);
+    --black: #000000;
+    --white: #ffffff;
+    --red: #da2128;
+    --grey: #eef2f6;
+    --transparent: rgba(255, 255, 255, 0);
 
     /* Base */
-    /* $color-black: #0e0e0e;
-    $color-white: #f2f2f2;
-    $color-grey: #757575;
-    $color-darkmagenta: #90278e; */
-
-    /* Gradient */
-    /* $black-to-right: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0) 75%
-); */
+    --font-primary: var(--black);
+    --button-primary: var(--red);
+    --border-light: var(--grey);
 
     /* Typography */
-    --font-family: 'Roboto', 'Arial', sans-serif;
-
-    /* Animation */
-
-    /* $default-transition-settings: 0.3s ease;
-$modal-transition-settings: 0.6s cubic-bezier(0.55, 0, 0.1, 1); */
+    --font-family: 'Raleway', 'Arial', sans-serif;
 
     /* Viewports */
     --viewport--sm: 320px;

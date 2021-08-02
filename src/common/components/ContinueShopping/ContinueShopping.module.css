@@ -1,0 +1,14 @@
+.continueShopping {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2em;
+    color: #a3a3a3;
+    text-transform: uppercase;
+}
+
+.continueShoppingText {
+    margin-left: 1rem;
+}

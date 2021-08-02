@@ -118,5 +118,7 @@ export const selectProductsInCart = (state: RootState) => {
 };
 
 export const selectCartId = (state: RootState) => state.cart.cartId;
+export const selectTotalsItemsInCart = (state: RootState) =>
+    state.cart.products.reduce((total, product) => total + product.quantity, 0);
 
 export default cartSlice.reducer;

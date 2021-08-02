@@ -1,27 +1,9 @@
-@import '../common/styles/variables.css';
-@import '../common/styles/utils.css';
-@import '../common/styles/vendors/normalize.css';
-@import '../common/styles/vendors/reboot.css';
-
-/* Import rc=pagination styles */
-@import '../../node_modules/rc-pagination/assets/index.css';
-
-/* Import Swiper styles */
-@import 'swiper/swiper.min.css';
-@import 'swiper/components/pagination/pagination.min.css';
-@import 'swiper/components/navigation/navigation.min.css';
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 .container {
     width: 100%;
     min-width: var(--viewport--sm);
     max-width: var(--viewport--xl);
     margin: 0 auto;
-
-    padding: 0;
-
-    background-color: var(--color-default-white);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    padding: 0 1rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
 }

@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../common/hooks/hooks';
 import { selectProductsInCart } from './shoppingCartSlice';
-import { Product } from '../../common/components/Product/Product';
-import { NavLink } from 'react-router-dom';
-import { AppRoutes } from '../../common/consts';
+import { ItemInCart } from '../../common/components/ItemInCart/ItemInCart';
 import { Notification } from '../../common/components/Notification/Notification';
+import styles from './ShoppingCart.module.css';
+import { Header } from '../../common/components/Header/Header';
+import { ContinueShopping } from '../../common/components/ContinueShopping/ContinueShopping';
 
 export const ShoppingCart = () => {
     const products = useAppSelector(selectProductsInCart);
@@ -12,22 +13,27 @@ export const ShoppingCart = () => {
 
     return (
         <>
-            <NavLink to={AppRoutes.PRODUCTS}>Return to product's list</NavLink>
-
+            <Header searchDisabled />
             {isCartEmpty && <Notification message={'Cart is empty'} />}
 
             {!isCartEmpty && (
-                <ul>
+                <ul className={styles.itemsList}>
                     {products.map(
                         product =>
                             product && (
-                                <li>
-                                    <Product item={product} />
+                                <li className={styles.item}>
+                                    <ItemInCart item={product} />
                                 </li>
                             ),
                     )}
                 </ul>
             )}
+
+            {/* <NavLink className={styles.continueShopping} to={AppRoutes.PRODUCTS}>
+                <ContinueShoppingIcon />
+                <span className={styles.continueShoppingText}>Continue shopping</span>
+            </NavLink> */}
+            <ContinueShopping />
         </>
     );
 };

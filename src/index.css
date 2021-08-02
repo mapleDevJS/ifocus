@@ -1,11 +1,12 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@import './common/styles/variables.css';
+@import './common/styles/utils.css';
+@import './common/styles/vendors/normalize.css';
+@import './common/styles/vendors/reboot.css';
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
+/* Import rc=pagination styles */
+@import '/node_modules/rc-pagination/assets/index.css';
+
+/* Import Swiper styles */
+@import 'swiper/swiper.min.css';
+@import 'swiper/components/pagination/pagination.min.css';
+@import 'swiper/components/navigation/navigation.min.css';

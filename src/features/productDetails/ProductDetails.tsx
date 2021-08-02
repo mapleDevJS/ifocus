@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../common/hooks/hooks';
 import { ProductCard } from '../../common/components/ProductCard/ProductCard';
 import { loadProduct, resetProduct, selectProduct } from './productDetailsSlice';
 import { Notification } from '../../common/components/Notification/Notification';
 import { Status } from '../../app/types';
-import { AppRoutes, Messages } from '../../common/consts';
+import { Messages } from '../../common/consts';
+import styles from './ProductDetails.module.css';
+import { Header } from '../../common/components/Header/Header';
+import { ContinueShopping } from '../../common/components/ContinueShopping/ContinueShopping';
 
 export const ProductDetails: React.FC = () => {
     const product = useAppSelector(selectProduct);
@@ -23,9 +26,16 @@ export const ProductDetails: React.FC = () => {
 
     return (
         <>
-            <NavLink to={AppRoutes.PRODUCTS}>Return to product's list</NavLink>
+            <Header searchDisabled />
             {status !== Status.IDLE && <Notification message={Messages[status]} />}
-            {product && <ProductCard product={product} />}
+
+            {product && (
+                <div className={styles.productDetails}>
+                    <ProductCard product={product} />
+                </div>
+            )}
+
+            <ContinueShopping />
         </>
     );
 };
