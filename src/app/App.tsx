@@ -1,6 +1,6 @@
 import { createBrowserHistory } from 'history';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
-import './app.css';
+import './App.css';
 import { Products } from '../features/products/Products';
 import { ProductDetails } from '../features/productDetails/ProductDetails';
 import { ShoppingCart } from '../features/shoppingCart/ShoppingCart';
